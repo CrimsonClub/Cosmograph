@@ -1,57 +1,41 @@
-name: LPC
+name: Cosmograph
 version: '${version}'
-main: de.ayont.lpc.LPC
+main: dev.noellx.cosmograph.Cosmograph
 api-version: '${apiVersion}'
 folia-supported: true
-authors: [Ayont, Veylor-Development]
+authors: [Ayont, Veylor-Development, Noellx, Nullifidev]
 depend: [LuckPerms]
 softdepend: [PlaceholderAPI]
-description: Flexible MiniMessage chat formatter for LuckPerms (Minecraft 26.2 / Java 25 / Adventure 5)
+description: Noellx Private Message Formatter (LPC)
 website: https://modrinth.com/plugin/lpc-chat
 commands:
-  lpc:
-    description: LPC chat formatter commands.
-    usage: "Usage: /lpc <reload|version|help>"
+  cosmograph:
+    description: Cosmograph chat formatter commands.
+    usage: "Usage: /cosmograph <reload|version|help>"
+  msg:
+    description: Send a formatted private message.
+    usage: "Usage: /msg <player> <message>"
+    aliases: [tell, whisper]
+  r:
+    description: Reply to the last private message.
+    usage: "Usage: /r <message>"
+    aliases: [reply]
 permissions:
-  lpc.reload:
-    description: Allows reloading the LPC configuration.
+  cosmograph.reload:
+    description: Allows reloading the Cosmograph configuration.
     default: op
-  lpc.chatcolor:
+  cosmograph.chatcolor:
     description: Allows using colour codes and cosmetic MiniMessage tags in chat.
     default: false
-  lpc.itemplaceholder:
-    description: Allows using the [item] placeholder in chat. Ops get this by default; grant it to a group (e.g. /lp group default permission set lpc.itemplaceholder true) to enable for everyone.
+  cosmograph.itemplaceholder:
+    description: Allows using the [item] placeholder in chat. Ops get this by default; grant it to a group (e.g. /lp group default permission set cosmograph.itemplaceholder true) to enable for everyone.
     default: op
-  lpc.update:
-    description: Receive an update notification on join when a new version is available.
-    default: op
-  lpc.emoji:
+  cosmograph.emoji:
     description: Use emoji shortcuts in chat (only enforced when emoji.require-permission is true).
     default: true
-  lpc.chatlinks:
+  cosmograph.chatlinks:
     description: Have URLs in your messages turned into clickable links.
     default: true
-  lpc.mention.exempt:
+  cosmograph.mention.exempt:
     description: Opt out of receiving mention pings.
     default: false
-  lpc.mute:
-    description: Use /lpc mute and /lpc unmute.
-    default: op
-  lpc.muted:
-    description: Marks a player as muted (usually granted by a punishment plugin).
-    default: false
-  lpc.bypass.spam:
-    description: Bypass the anti-spam cooldown.
-    default: op
-  lpc.bypass.repeat:
-    description: Bypass the repeated-message filter.
-    default: op
-  lpc.bypass.caps:
-    description: Bypass the caps filter.
-    default: op
-  lpc.bypass.profanity:
-    description: Bypass the profanity filter.
-    default: op
-  lpc.bypass.advert:
-    description: Bypass the anti-advertising filter.
-    default: op

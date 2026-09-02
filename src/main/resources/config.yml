@@ -24,6 +24,8 @@
 
 # Main chat format.
 chat-format: "{prefix}{name}<dark_gray> »<reset> {message}"
+# Formatted private messages sent by /msg and /r.
+whisper-format: "<dark_gray>[<light_purple>MSG</light_purple>] <sender> <gray>-></gray> <recipient><dark_gray>:<reset> {message}"
 
 # Per-group formats (optional). Remove the leading '#' to enable.
 group-formats:
@@ -36,12 +38,12 @@ track-formats:
 #  donator_track: "<aqua>[Donator]</aqua> {name}<dark_gray> »<reset> {message}"
 
 # Enable the [item] placeholder (shows the held item, with a hover tooltip on Paper).
-# NOTE: each player ALSO needs the 'lpc.itemplaceholder' permission (default: op — ops can use it
-# immediately). Grant it to everyone with e.g.  /lp group default permission set lpc.itemplaceholder true
+# NOTE: each player ALSO needs the 'cosmograph.itemplaceholder' permission (default: op — ops can use it
+# immediately). Grant it to everyone with e.g.  /lp group default permission set cosmograph.itemplaceholder true
 # Players who type [item] without the permission get a hint in chat.
 use-item-placeholder: true
 
-# Allow players with 'lpc.chatcolor' to use <gradient> and <rainbow> tags in their messages.
+# Allow players with 'cosmograph.chatcolor' to use <gradient> and <rainbow> tags in their messages.
 # Cosmetic colour/decoration tags are always allowed for that permission. Interactive tags
 # (click, hover, insertion, ...) are NEVER honoured in player messages, for security.
 allow-gradient-tags: true
@@ -49,11 +51,8 @@ allow-gradient-tags: true
 # Worlds in which LPC will NOT format chat (left to vanilla / other plugins).
 disabled-worlds: []
 
-# Check Modrinth for new versions on startup and notify players with 'lpc.update' on join.
-update-checker: true
-
-# Message shown after running '/lpc reload'.
-reload-message: "<green>Reloaded LPC configuration!"
+# Message shown after running '/cosmograph reload'.
+reload-message: "<green>Reloaded Cosmograph configuration!"
 
 # ─────────────────────────────────────────────────────────────────────────
 #  @Mention pings — highlight online player names; ping them (sound + action
@@ -79,7 +78,7 @@ mentions:
 # ─────────────────────────────────────────────────────────────────────────
 emoji:
   enabled: true
-  # When true, only players with 'lpc.emoji' get emoji replacement.
+  # When true, only players with 'cosmograph.emoji' get emoji replacement.
   require-permission: false
   replacements:
     ":heart:": "❤"
@@ -91,7 +90,7 @@ emoji:
 
 # ─────────────────────────────────────────────────────────────────────────
 #  URL linkification — make links clickable (Paper) / coloured (Spigot).
-#  Requires the 'lpc.chatlinks' permission. openUrl only, never run_command.
+#  Requires the 'cosmograph.chatlinks' permission. openUrl only, never run_command.
 # ─────────────────────────────────────────────────────────────────────────
 link-urls:
   enabled: true
@@ -129,7 +128,7 @@ group-name-gradients:
 #  donator: "#B754F4:#FC00FF"
 
 # ─────────────────────────────────────────────────────────────────────────
-#  Join / Quit / First-join / Death messages (MiniMessage). Leave a format
+#  Join / Quit / First-join messages (MiniMessage). Leave a format
 #  empty to suppress that message entirely.
 # ─────────────────────────────────────────────────────────────────────────
 join-messages:
@@ -141,64 +140,7 @@ join-messages:
 quit-messages:
   enabled: false
   format: "<dark_gray>[<red>-</red>] {prefix}{name}"
-death-messages:
-  enabled: false
-  # <death-message> is the vanilla death cause.
-  format: "<gray>☠ <death-message>"
-  show-vanilla-cause: true
 
-# ─────────────────────────────────────────────────────────────────────────
-#  Moderation — runs before formatting. Master switch; each filter also has
-#  its own toggle. Bypass with lpc.bypass.<spam|repeat|caps|profanity|advert>.
-# ─────────────────────────────────────────────────────────────────────────
-moderation:
-  enabled: false
-
-anti-spam:
-  enabled: true
-  cooldown-millis: 1500
-  message: "<red>Please wait <yellow><seconds>s</yellow> before chatting again."
-
-repeat-filter:
-  enabled: true
-  expiry-millis: 30000
-  message: "<red>Please don't repeat the same message."
-
-caps-filter:
-  enabled: true
-  min-length: 8
-  max-uppercase-ratio: 0.7
-  # BLOCK or LOWERCASE
-  action: LOWERCASE
-  message: "<red>Please don't shout."
-
-profanity-filter:
-  enabled: false
-  # BLOCK or MASK
-  action: MASK
-  words: []
-  mask-char: "*"
-  message: "<red>Watch your language."
-
-anti-advert:
-  enabled: false
-  # BLOCK or REDACT
-  action: REDACT
-  detect-ip: true
-  allowlist: []
-  mask: "[link removed]"
-  message: "<red>Advertising is not allowed."
-
-# ─────────────────────────────────────────────────────────────────────────
-#  Mute — block chat for muted players. A player is muted if they hold the
-#  permission node below (set by a punishment plugin) or are temp-muted via
-#  /lpc mute <player> [duration].
-# ─────────────────────────────────────────────────────────────────────────
-mute:
-  enabled: false
-  enable-commands: true
-  permission-node: "lpc.muted"
-  message: "<red>You are currently muted."
 
 # Internal config version. Do not edit.
 config-version: 3
