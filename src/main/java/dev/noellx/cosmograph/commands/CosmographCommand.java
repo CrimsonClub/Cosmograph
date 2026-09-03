@@ -47,14 +47,14 @@ public class CosmographCommand implements CommandExecutor, TabCompleter {
         }
         plugin.reloadConfig();
         plugin.reloadServices();
-        String raw = plugin.getConfig().getString("reload-message", "<green>Reloaded LPC configuration!");
+        String raw = plugin.getConfig().getString("reload-message", "<green>Reloaded Cosmograph configuration!");
         plugin.send(sender, mini(raw));
     }
 
     @SuppressWarnings("deprecation") // getDescription() is cross-platform
     private void handleVersion(CommandSender sender) {
         String platform = plugin.isFolia() ? "Folia" : plugin.isPaper() ? "Paper" : "Spigot";
-        plugin.send(sender, mini("<gradient:#B754F4:#FC00FF>LPC</gradient> <gray>v<white>"
+        plugin.send(sender, mini("<gradient:#B754F4:#FC00FF>Cosmograph</gradient> <gray>v<white>"
                 + plugin.getDescription().getVersion() + "</white> <dark_gray>— <gray>MiniMessage chat formatter."));
         java.util.Properties build = readBuildInfo();
         plugin.send(sender, mini("<dark_gray>Build: <gray>compiled for Minecraft <white>"
@@ -79,7 +79,7 @@ public class CosmographCommand implements CommandExecutor, TabCompleter {
     }
 
     private void sendHelp(CommandSender sender) {
-        plugin.send(sender, mini("<gradient:#B754F4:#FC00FF>LPC</gradient> <gray>commands:"));
+        plugin.send(sender, mini("<gradient:#B754F4:#FC00FF>Cosmograph</gradient> <gray>commands:"));
         plugin.send(sender, mini("<dark_gray>- <white>/cosmograph reload</white> <dark_gray>» <gray>Reload the configuration"));
         plugin.send(sender, mini("<dark_gray>- <white>/cosmograph version</white> <dark_gray>» <gray>Show the plugin version"));
     }

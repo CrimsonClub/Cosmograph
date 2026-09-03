@@ -84,7 +84,7 @@ public final class Cosmograph extends JavaPlugin {
             return;
         }
         send(player, MiniMessage.miniMessage().deserialize(
-                "<dark_gray>[<gradient:#B754F4:#FC00FF>LPC</gradient>] <yellow>Ask an admin for the "
+                "<dark_gray>[<gradient:#B754F4:#FC00FF>Cosmograph</gradient>] <yellow>Ask an admin for the "
                         + "<white>cosmograph.itemplaceholder</white> permission to use <white>[item]</white> in chat."));
     }
 

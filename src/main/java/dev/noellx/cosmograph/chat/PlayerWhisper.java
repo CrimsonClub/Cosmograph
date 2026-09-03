@@ -58,6 +58,10 @@ public final class PlayerWhisper implements CommandExecutor, TabCompleter {
             plugin.send(player, Component.text("Usage: /" + label + " " + (messageStart == 1 ? "<player> " : "") + "<message>"));
             return true;
         }
+        if (player.getUniqueId().equals(target.getUniqueId())) {
+            plugin.send(player, Component.text("You cannot message yourself."));
+            return true;
+        }
         String raw = String.join(" ", java.util.Arrays.copyOfRange(args, messageStart, args.length));
         Component message = plugin.getChatFormatService().messageComponent(raw, player.hasPermission("cosmograph.chatcolor"));
         Component formatted = plugin.getChatFormatService().renderWhisper(player, target, message);
@@ -75,7 +79,10 @@ public final class PlayerWhisper implements CommandExecutor, TabCompleter {
             return List.of();
         }
         String prefix = args[0].toLowerCase();
-        return plugin.getServer().getOnlinePlayers().stream().map(Player::getName)
+        UUID playerId = sender instanceof Player player ? player.getUniqueId() : null;
+        return plugin.getServer().getOnlinePlayers().stream()
+                .filter(player -> !player.getUniqueId().equals(playerId))
+                .map(Player::getName)
                 .filter(name -> name.toLowerCase().startsWith(prefix)).toList();
     }
 }

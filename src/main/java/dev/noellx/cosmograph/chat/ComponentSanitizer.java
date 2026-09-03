@@ -11,7 +11,7 @@ import net.kyori.adventure.text.Component;
  * <p>Player-facing text is already parsed with a restricted (cosmetic-only) MiniMessage instance, so
  * a player can never legitimately produce these events in their own message. This pass guarantees
  * that invariant at the component level too — so even if a future code path, a renamed item (anvil),
- * or a third-party plugin hands LPC a component that already carries an interactive event, it can
+ * or a third-party plugin hands Cosmograph a component that already carries an interactive event, it can
  * never reach another player's chat as a clickable / hoverable / shift-insertable element. Cosmetic
  * styling (colours, decorations) is preserved.
  *
